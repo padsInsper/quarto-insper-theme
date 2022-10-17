@@ -1,0 +1,109 @@
+---
+title: "Template Insper"
+subtitle: "Feito usando o Quarto"
+author: "autoria"
+institute: "Insper"
+date: 2022-10-19
+format: 
+  insper-revealjs:
+    self-contained: true
+    footer: |
+      Tema do [Insper](https://insper.edu.br/) para [Quarto](https://quarto.org/docs/presentations/revealjs/index.html). Código no [GitHub](https://github.com/padsInsper/quarto-insper-theme).
+date-format: long
+lang: pt
+---
+
+## Objetivos de aprendizagem
+
+1. Objetivo 1
+1. Objetivo 2
+1. Objetivo 3
+
+::: notes
+
+Notas para o speaker
+
+:::
+
+## Dinâmica
+
+Informações extras sobre a aula
+
+## Imagem
+
+Exemplo de imagem externa
+
+![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/e30b11d8-cb89-4229-87e5-6dad81e6dcf8_rw_1920.jpg?h=abaa7994e093570cf2aa36408f3e1121){fig-align="center" width="800"}
+
+::: aside
+
+Imagem de [Allison Horst](https://allisonhorst.com)
+
+:::
+
+## Código
+
+Bloco de código
+
+```{r}
+#| echo: true
+variavel_r <- "Olá, python!"
+print(variavel_r)
+```
+
+Agora usando python através do pacote `{reticulate}`:
+
+```{python}
+#| echo: true
+print (r.variavel_r.replace('python', 'R'))
+```
+
+Agora instale o pacote [`{coresInsper}`](https://padsInsper/coresInsper), rodando
+
+```{r}
+#| eval: false
+#| echo: true
+remotes::install_github("padsInsper/coresInsper")
+```
+
+## Gráfico
+
+```{r}
+#| fig-dpi: 300
+#| fig-height: 6
+#| fig-width: 9
+
+library(ggplot2)
+
+cores <- coresInsper::cores_insper()
+
+diamonds |> 
+  dplyr::group_by(cut) |> 
+  dplyr::summarise(mediana = median(price)) |> 
+  dplyr::mutate(
+    cut = forcats::fct_reorder(cut, mediana, .desc = TRUE),
+    ideal = ifelse(cut == "Ideal", "Sim", "Não")
+  ) |> 
+  ggplot() +
+  aes(mediana, cut, fill = ideal) +
+  geom_col() +
+  scale_fill_manual(values = cores[c(2,4)]) +
+  theme_minimal(15)
+```
+
+
+# Título
+
+## Exercício! {background-color="#E6E7E8"}
+
+Mudando o fundo da tela
+
+## Resumo
+
+1. Conclusão 1
+1. Conclusão 2
+1. Conclusão 3
+
+Emojis estão liberados! 🎉🎉🎉
+
+# Fim
