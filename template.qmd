@@ -1,12 +1,12 @@
 ---
-title: "Template Insper"
+title: "Template para Apresentações"
 subtitle: "Feito usando o Quarto"
-author: "autoria"
+author: "Autoria"
 institute: "Insper"
-date: 2022-10-19
-format: 
+date: 2024-08-30
+format:
   insper-revealjs:
-    self-contained: true
+    self-contained: false
     footer: |
       Tema do [Insper](https://insper.edu.br/) para [Quarto](https://quarto.org/docs/presentations/revealjs/index.html). Código no [GitHub](https://github.com/padsInsper/quarto-insper-theme).
 date-format: long
@@ -77,18 +77,30 @@ library(ggplot2)
 
 cores <- coresInsper::cores_insper()
 
-diamonds |> 
-  dplyr::group_by(cut) |> 
-  dplyr::summarise(mediana = median(price)) |> 
+extrafont::loadfonts(device = "win", quiet = TRUE)
+
+dados::diamante |>
+  dplyr::group_by(corte) |>
+  dplyr::summarise(mediana = median(preco)) |>
   dplyr::mutate(
-    cut = forcats::fct_reorder(cut, mediana, .desc = TRUE),
-    ideal = ifelse(cut == "Ideal", "Sim", "Não")
-  ) |> 
+    corte = forcats::fct_reorder(corte, mediana, .desc = TRUE),
+    ideal = ifelse(corte == "Ideal", "Sim", "Não")
+  ) |>
   ggplot() +
-  aes(mediana, cut, fill = ideal) +
+  aes(mediana, corte, fill = ideal) +
   geom_col() +
-  scale_fill_manual(values = cores[c(2,4)]) +
-  theme_minimal(15)
+  scale_fill_manual(values = cores[c(7,3)]) +
+  theme_minimal(18) +
+  labs(
+    title = "Título do gráfico",
+    x = "Preço mediano",
+    y = "Corte",
+    fill = "Ideal?"
+  ) +
+  theme(
+    plot.title = element_text(family = "GT Ultra Fine Regular"),
+    text = element_text(family = "Inter")
+  )
 ```
 
 

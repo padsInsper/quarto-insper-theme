@@ -1,17 +1,26 @@
 /*-- scss:defaults --*/
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+@font-face {
+  font-family: "GT Ultra Fine";
+  src: url("/_extensions/insper/font/GTUltraFine-Bold.f6fa8a8b.ttf");
+}
+
 $body-bg: #fff;
-$body-color: #414042;
-$link-color: #C4161C;
-$code-color: #27A5A2;
-$code-block-border-color: #009491;
+$body-color: #000000;
+$link-color: #E50505;
+$code-color: #3ACC9F;
+$code-block-border-color: #3ACC9F;
 
-$presentation-heading-color: #C4161C;
-$presentation-font-size-root: 30px;
+$presentation-heading-color: #000000;
+$presentation-font-size-root: 28px;
 
-$font-family-sans-serif: "Prelo Medium";
+$presentation-heading-font: "GT Ultra Fine";
+$font-family-sans-serif: "Inter";
 
 $presentation-slide-text-align: left;
+
 
 $code-block-font-size: 1em;
 
@@ -21,21 +30,45 @@ h1 {
 
 /*-- scss:rules --*/
 
-@font-face {font-family: "Prelo Medium";
-    src: url("https://github.com/padsInsper/quarto-insper-theme/raw/main/_extensions/insper/font/prelo.eot"); /* IE9*/
-    src: url("https://github.com/padsInsper/quarto-insper-theme/raw/main/_extensions/insper/font/prelo_ie6.eot") format("embedded-opentype"), /* IE6-IE8 */
-    url("https://github.com/padsInsper/quarto-insper-theme/raw/main/_extensions/insper/font/prelo.woff2"), /* chrome firefox */
-    url("https://github.com/padsInsper/quarto-insper-theme/raw/main/_extensions/insper/font/prelo.woff") format("woff"), /* chrome firefox */
-    url("https://github.com/padsInsper/quarto-insper-theme/raw/main/_extensions/insper/font/prelo.ttf") format("truetype"), /* chrome firefox opera Safari, Android, iOS 4.2+*/
-    url("https://raw.githubusercontent.com/padsInsper/quarto-insper-theme/main/_extensions/insper/font/prelo.svg") format("svg"); /* iOS 4.1- */
+#title-slide {
+  background-image: url("/_extensions/insper/insper-bg.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 300px;
+  height: 100%;
 }
 
+
+h1.title {
+  text-align: left;
+  /* Vertical alignment doesn't work directly on inline elements */
+  /* We'll use flexbox to achieve vertical centering */
+  display: flex;
+  align-items: center;
+  padding-top: 20%;
+  max-width: 800px;
+}
+
+p.subtitle {
+  text-align: left;
+}
+
+.date {
+  font-size: 21px !important;
+}
 
 .reveal .slide blockquote {
   border-left: 3px solid $text-muted;
   padding-left: 0.5em;
 }
 
+.reveal .footer {
+  font-size: 18px !important;
+}
+
+.title-slide > h1 {
+  text-align: left;
+}
 
 .v-center-container {
   display: flex !important;
@@ -50,9 +83,9 @@ h1 {
 
 
 .red {
-  color: #E80724;
+  color: #E50505;
 }
 
 .green {
-  color: #3CBFAE;
+  color: #3ACC9F;
 }
